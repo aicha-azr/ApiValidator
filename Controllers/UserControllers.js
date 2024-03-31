@@ -19,24 +19,6 @@ const controllers = {
       res.status(500).json({ error: 'Erreur lors de l\'enregistrement de l\'utilisateur' });
     }
   },
-  submitData: async (req, res) => {
-    try {
-      const { error } = validateUser(req.body);
-      if (error) {
-        return res.status(400).json({ error: error.details[0].message });
-      }
-
-      const newData = new Data({
-        // Ajoutez ici les champs de votre modèle de données
-      });
-
-      const savedData = await newData.save();
-
-      res.status(201).json(savedData);
-    } catch (err) {
-      res.status(500).json({ error: "Erreur lors de la soumission de données" });
-    }
-  },
   put: async (req, res) => {
     try {
       const { error } = validateUser(req.body);
